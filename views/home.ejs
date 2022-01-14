@@ -1,0 +1,14 @@
+<%- include('partials/header') -%>
+<h1>Home</h1>
+<p>Keeping a journal helps you create order when your world feels like it’s in chaos. You get to know yourself by revealing your most private fears, thoughts, and feelings. Look at your writing time as personal relaxation time. It's a time when you can de-stress and wind down. Write in a place that's relaxing and soothing, maybe with a cup of tea. Look forward to your journaling time. And know that you're doing something good for your mind and body.</p>
+
+<% posts.forEach(function(post) { %>
+    <div>
+        <h1><%= post.title%></h1>
+        <p>
+            <%= post.content.substring(0,100) + '...' %>
+            <a href="/posts/<%=post._id%>">Read More</a>  
+        </p>
+    </div>    
+<% }) %>
+<%- include('partials/footer') -%>
