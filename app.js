@@ -29,10 +29,10 @@ const recipeSchema = {
   content: String
 }
 
-const Recipe = mongoose.model('Recipe', recipeSchema)
+const Post = mongoose.model('Post', recipeSchema)
 
 app.get('/', function (req, res) {
-  Recipe.find({}, function (err, posts) {
+  Post.find({}, function (err, posts) {
     res.render('home', { posts: posts })
   })
 })
@@ -46,13 +46,13 @@ app.get('/compose', function (req, res) {
 })
 
 app.get('/posts/:x', function (req, res) {
-  Recipe.findById(req.params.x, function (err, foundPost) {
+  Post.findById(req.params.x, function (err, foundPost) {
     res.render('post', { post: foundPost })
   })
 })
 
 app.post('/compose', function (req, res) {
-  Recipe.create({
+  Post.create({
     title: req.body.titleText,
     content: req.body.postText
   })
